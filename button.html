@@ -1,0 +1,75 @@
+<button class="button">
+    <span class="button-text">Contact me</span>
+</button>
+
+<style>
+    .button {
+        position: relative;
+        display: inline-block;
+        padding: 1.5px;
+        border-radius: 9999px;
+        background-color: #2c3237;
+        color: #dfe5ec;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        overflow: hidden;
+        outline: none;
+        border: none;
+    }
+
+    .button-text {
+        display: block;
+        padding: 0.75rem 1.75rem;
+        border-radius: 9999px;
+        background-color: #1b2227;
+        position: relative;
+        z-index: 1;
+    }
+
+    .button::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        display: block;
+        border-radius: 9999px;
+        background: conic-gradient(
+            from 180deg at 50% 50%,
+            #ffc8752c 0deg,
+            #ffeaca 10deg,
+            #ffc875 25deg,
+            #a787ff 112.5deg,
+            #66e3ff 203.75deg,
+            #d2f7ff 213.75deg,
+            #66e3ff 228.75deg,
+            rgba(42, 138, 246, 0) 1turn
+        );
+        width: calc(100% * 2);
+        padding-bottom: calc(100% * 2);
+        transform: translate(-50%, -50%);
+        will-change: transform;
+        z-index: 0;
+        transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        animation: spin 5s linear infinite;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: translate(-50%, -50%) rotate(1turn);
+        }
+        100% {
+            transform: translate(-50%, -50%) rotate(0);
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .button::before {
+            opacity: 0;
+        }
+
+        .button:hover::before {
+            opacity: 1;
+        }
+    }
+</style>
